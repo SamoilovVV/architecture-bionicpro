@@ -41,17 +41,17 @@ services:
       REACT_APP_KEYCLOAK_REALM: reports-realm
       REACT_APP_KEYCLOAK_CLIENT_ID: reports-frontend
       
-api:
-  build:
-    context: ./api
-    dockerfile: Dockerfile
-  ports:
-    - "8000:8000"
-  depends_on:
-    - keycloak
-  environment:
-    FLASK_KEYCLOCK: http://keycloak:8080
-  restart: on-failure
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - keycloak
+    environment:
+      FLASK_KEYCLOCK: http://keycloak:8080
+    restart: on-failure
 
 networks:
   app-net:
