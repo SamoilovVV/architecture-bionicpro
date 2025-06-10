@@ -4,6 +4,7 @@ from urllib.request import urlopen
 from urllib.error import URLError
 from authlib.jose.rfc7517.jwk import JsonWebKey
 from flask import Flask, request
+from flask_cors import CORS
 import os
 import jwt
 import time
@@ -35,7 +36,7 @@ keys = [k.as_pem() for k in keys.keys]
 
 
 APP = Flask(__name__)
-
+CORS(APP)
 
 def validate_token(token):
     for key in keys:
